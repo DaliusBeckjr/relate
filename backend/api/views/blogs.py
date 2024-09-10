@@ -6,13 +6,6 @@ from api.serializers import UserSerializer, BlogSerializer
 from blog.models import Blog
 
 
-
-@api_view(['GET'])
-def index(request):
-    message = "we made it"
-    return Response({'message': message})
-
-
 @api_view(['POST'])
 def create_blog(request):
     """
