@@ -1,24 +1,22 @@
-import { Outlet, NavLink } from "react-router-dom"
-
+import { Outlet } from "react-router-dom"
+import Navbar from "../components/Navbar"
 
 const RootLayout = () => {
     return (
         <>
-        <header>
-            <nav>
-                <p className="text-xl font-semibold">Relate</p>
-                <NavLink to='/'>Home</NavLink> |
-                <NavLink to='/create'>Create</NavLink>
-            </nav>
-        </header>
-        <main>
-            <Outlet />
-        </main>
-        <footer>
+            <header>
+                <Navbar />
+            </header>
+            <main>
+                <Outlet />
+            </main>
+            <footer>
 
-        </footer>
+            </footer>
         </>
     )
 }
+
+
 
 export default RootLayout
