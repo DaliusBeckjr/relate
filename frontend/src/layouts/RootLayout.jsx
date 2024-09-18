@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar"
 const RootLayout = () => {
     return (
         <>
-            <header>
+            <header className="px-6 py-6">
                 <Navbar />
             </header>
             <main>
