@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, ValidationError
 from blog.models import Blog
 
 
@@ -8,12 +8,12 @@ class UserSerializer(ModelSerializer):
 
 
 class BlogSerializer(ModelSerializer):
-    class meta:
+    class Meta:
         model= Blog
-        fields = ['id', 'title', 'body', 'created_at', ]
+        fields = '__all__'
         validators = []
 
     def validate_title(self, value):
-        ...
+        pass
     def validate_body(self, value):
-        ...
+        pass

@@ -17,9 +17,26 @@ def create_blog(request):
     """
     title = request.data.get('title')
     body = request.data.get('body')
+    
+    empty_fields = []
+    if not title:
+        empty_fields.append('title')
+    if not body:
+        empty_fields.append('body')
+
+    if empty_fields:
+        return Response({'error': "please fill in all fields", "empty_fields": empty_fields}, status=HTTP_400_BAD_REQUEST)
 
     data = {'title': title, 'body': body}
     serializer = BlogSerializer(data=data)
+    
+    if not serializer.is_valid():
+        error_list = []
+        for messages in serializer.errors.values():
+            error_list.extend(messages)
+        error_messages = "".join(error_list)
+        return Response({'error': error_messages}, status=HTTP_400_BAD_REQUEST)
+    
     serializer.save()
     return Response(serializer.data, status=HTTP_201_CREATED)
 
