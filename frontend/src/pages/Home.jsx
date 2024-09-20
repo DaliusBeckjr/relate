@@ -30,12 +30,12 @@ const Home = () => {
 
     return (
         <>
-            <div>Home</div>
-            <div className="blogs">
+            <div className="text-center font-semibold text-xl">Home</div>
+            <div className="blogs flex flex-col gap-8 rounded-xl bg-slate-200 shadow-md mx-6 py-6 px-4">
                 {/* would have to use Link to navigate to single blog page */}
                 {blogs && blogs.map((blog) => (
                         <div key={blog.id} className="blog">
-                            <h2>{blog.title}</h2>
+                            <h2 className="text-xl font-semibold">{blog.title}</h2>
                             <p>{blog.body}</p>
                         </div>
                     ))}
