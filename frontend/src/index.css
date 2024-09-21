@@ -13,3 +13,7 @@ body {
 .glass {
   @apply bg-white/10 rounded-lg shadow-lg shadow-black/10 backdrop-blur-[5.7px] border border-white/20;
 }
+
+.glass-dark {
+  @apply bg-black/40 shadow-lg shadow-black/50 border border-white/10;
+}
