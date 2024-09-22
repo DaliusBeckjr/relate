@@ -10,10 +10,10 @@ class UserSerializer(ModelSerializer):
 class BlogSerializer(ModelSerializer):
     class Meta:
         model= Blog
-        fields = '__all__'
-        validators = []
+        fields = ['id','title', 'body', 'created_at', 'updated_at']
+        # validators = []
 
-    def validate_title(self, value):
-        pass
-    def validate_body(self, value):
-        pass
+    # def validate_title(self, value):
+    #     pass
+    # def validate_body(self, value):
+    #     pass

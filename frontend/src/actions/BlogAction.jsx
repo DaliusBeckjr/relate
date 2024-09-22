@@ -1,23 +1,32 @@
-import { redirect } from "react-router-dom";
-export const BlogAction =  async ({request}) => {
+import { redirect } from "react-router-dom"
+
+const blogAction = async ({ request }) => {
+    const be_URI = 'http://localhost:8000/api/blogs/create/'
     const data = await request.formData();
 
-    const blog = {
-        title: data.get('title'),
-        body: data.get('body')
-    }
-
-    const response = await fetch('/api/blogs/create', {
+    const blog = { title: data.get('title'), body: data.get('body') }
+    console.log(blog)
+    const response = await fetch(be_URI, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
         },
         body: JSON.stringify(blog)
-    });
+    })
+    const json = await response.json()
 
+    // Handle errors from backend response
     if (!response.ok) {
-        throw new Error('failed to create blog');
+        return {
+            error: json.error,
+            emptyFields: json.emptyFields,
+        }
     }
 
-    return redirect('/create');
+    // Successful, redirect to another route
+    if (response.ok) {
+        return redirect('/')
+    }
 }
+
+export default blogAction;
