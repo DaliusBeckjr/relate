@@ -66,11 +66,16 @@ def get_single_blog(request, pk):
 
 
 @api_view(['PATCH'])
-def patch_blog(request):
+def patch_blog(request, pk):
     """
         This is a patch request where the client is able to update a single blogs information
     """
-    return Response("get all blogs")
+    blog = Blog.objects.get(id = pk)
+    serializer = BlogSerializer(instance= blog, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=HTTP_200_OK)
+    return Response({'error': serializer.errors}, status=HTTP_400_BAD_REQUEST)
 
 
 @api_view(['DELETE'])
