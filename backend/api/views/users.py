@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 
 from rest_framework_simplejwt.tokens import RefreshToken
-from serializers import UserSerializer
+from api.serializers import UserSerializer
 from user.models import User
 from django.contrib.auth import authenticate
 

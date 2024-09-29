@@ -18,3 +18,8 @@ A simple blogging platform with Markdown support. Allow users to create, edit, a
 Laters:
 we can add groups or communities
 we can add chats and groupchats (django channels)
+
+
+
+we can include a pagination in the backend to have a limit of new blog article entries
+we can even create a search bar to search for blog articles and users

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import blogs, users
+from .views import blogs
 
 urlpatterns = [
     path('blogs/', blogs.get_all_blogs),
@@ -7,6 +7,6 @@ urlpatterns = [
     path('blogs/create/', blogs.create_blog),
     path('blogs/update/<str:pk>', blogs.patch_blog),
     path('blogs/delete/<str:pk>', blogs.delete_blog),
-    path('user/login', users.index),
-    path('user/signup', users.index),
+    # path('user/login', users.index),
+    # path('user/signup', users.index),
 ]
