@@ -1,22 +1,13 @@
-import { useState } from "react";
-
+/* eslint-disable react/prop-types */
 import SimpleMDEditor from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 
-const BodyEditor = () => {
-    const [ value, setvalue ] = useState("");
-
-    const onChange = (value) => {
-        setvalue(value);
-    };
-
-
-
+const BodyEditor = ({ value, onChange }) => {
     return (
         <>
             <SimpleMDEditor
                 value={value}
-                onChange={onChange}
+                onChange={onChange} // Pass down the parent's onChange handler
             />
         </>
     );
