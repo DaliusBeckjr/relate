@@ -4,8 +4,12 @@ const blogAction = async ({ request }) => {
     const be_URI = 'http://localhost:8000/api/blogs/create/'
     const data = await request.formData();
 
-    const blog = { title: data.get('title'), body: data.get('body') }
+    const blog = {
+        title: data.get('title'),
+        body: data.get('body') 
+    }
     console.log(blog)
+
     const response = await fetch(be_URI, {
         method: 'POST',
         headers: {

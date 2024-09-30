@@ -1,15 +1,7 @@
 import { useLoaderData, Link } from "react-router-dom";
-// import { useEffect, useState } from "react";
 
 const Home = () => {
     const blogs = useLoaderData();
-    // const [ isLoading, setIsLoading ] = useState(true);
-
-    // useEffect(() => {
-    //     if (blogs) {
-    //         setIsLoading(false);
-    //     }
-    // }, [blogs]);
 
     return (
         <div className="blogs ">
@@ -20,7 +12,7 @@ const Home = () => {
                     className="blog-card flex flex-col  rounded-xl bg-slate-200 shadow-md mx-6 py-6 px-4 mb-6 dark:bg-slate-600"
                 >
                     <h2 className="text-xl font-semibold">{blog.title}</h2>
-                    <p>{blog.body.subString(0, 100)}...</p>
+                    <p>{blog.body.substring(0, 100)}...</p>
                 </Link>
             ))}
         </div>
