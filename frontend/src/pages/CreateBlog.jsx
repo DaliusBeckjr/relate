@@ -16,13 +16,13 @@ const CreateBlog = () => {
     return (
         <>
             <div>Create</div>
-            <div className="create-form">
+            <div className="create-form py-6 px-6">
                 {/* Form component for submission */}
                 <Form method="POST" action="/create">
                     {/* Blog title input */}
                     <div className="flex flex-col gap-3 mb-5">
                         <label>Title:</label>
-                        <input type="text" name="title" className="input w-full max-w-xs" required />
+                        <input type="text" name="title" className="border-2 border-gray-300 rounded-md" required />
                     </div>
 
                     {/* Markdown editor for body content */}
