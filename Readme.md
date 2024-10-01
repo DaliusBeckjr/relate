@@ -85,7 +85,7 @@
 
 ## License
 
-*(Include your license details here, such as MIT, Apache, etc.)*
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ## Contributors
 
