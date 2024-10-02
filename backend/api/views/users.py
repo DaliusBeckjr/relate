@@ -47,4 +47,15 @@ def sign_up(request):
 
 @api_view(['POST'])
 def login(request):
-    pass
+    """
+    Handles User login using the email and password to return an access and refresh token fot the authenticated user
+    """
+    email = request.data.get('email')
+    password = request.data.get('password')
+    
+    user = authenticate(username=email, password=password)
+    if user:
+        tokens = get_tokens_for_user(user)
+        user_data = user.email
+        return Response({'user': user_data, 'tokens': tokens}, status.HTTP_200_OK)
+    return Response({'error': 'Invalid Credentials'}, status.HTTP_400_BAD_REQUEST)
