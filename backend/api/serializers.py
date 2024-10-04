@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer, ValidationError
+from rest_framework.serializers import ModelSerializer
 from blog.models import Blog
 from user.models import User
 
@@ -7,7 +7,6 @@ class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
-
 
 
 class BlogSerializer(ModelSerializer):

@@ -24,6 +24,11 @@ def get_tokens_for_user(user):
 def sign_up(request):
     """
     Handles User signup using the username, email and password to create a new user and return an access and refresh token fot the authenticated user
+    {
+        "username": "username",
+        "email": "email",
+        "password": "password"
+    }
     """
     username = request.data.get('username')
     email = request.data.get('email')
@@ -49,6 +54,11 @@ def sign_up(request):
 def login(request):
     """
     Handles User login using the email and password to return an access and refresh token fot the authenticated user
+    
+    {
+        "email": "email",
+        "password": "password"
+    }
     """
     email = request.data.get('email')
     password = request.data.get('password')
