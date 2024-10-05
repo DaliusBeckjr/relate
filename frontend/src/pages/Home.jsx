@@ -7,7 +7,7 @@ const Home = () => {
         <div className="blogs ">
             {blogs && blogs.map(blog => (
                 <Link
-                    to={`/${blog.id}`}  // Make sure blog.id is properly used here
+                    to={`/${Number(blog.id)}`}  // Make sure blog.id is properly used here
                     key={blog.id}
                     className="blog-card flex flex-col  rounded-xl bg-slate-200 shadow-md mx-6 py-6 px-4 mb-6 dark:bg-slate-600"
                 >

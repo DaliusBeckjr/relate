@@ -12,6 +12,8 @@ import CreateBlog from './pages/CreateBlog';
 import { EditBlog } from './pages/EditBlog';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from './pages/NotFound';
+import LoginPage from './pages/LoginPage';
+
 
 // layouts
 import RootLayout from './layouts/RootLayout';
@@ -28,11 +30,14 @@ import blogEditAction from './actions/blogEditAction';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<RootLayout /> }>
+    <Route path='/' element={<RootLayout /> } errorElement={<NotFound />}>
+
       <Route index element={<Home /> } loader={BlogsLoader}/>
       <Route path='/create' element={<CreateBlog />} action={blogAction}/>
       <Route path='/:id' element={<BlogDetails />} loader={BlogDetailsLoader} />
       <Route path='/edit/:id' element={<EditBlog />} action={blogEditAction}  loader={BlogDetailsLoader}/>
+
+      <Route path='/login' element={<LoginPage />} />
       <Route path='*' element={<NotFound /> } />
     </Route>
   )
