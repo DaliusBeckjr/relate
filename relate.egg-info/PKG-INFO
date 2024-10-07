@@ -1,0 +1,169 @@
+Metadata-Version: 2.1
+Name: relate
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: annotated-types==0.7.0
+Requires-Dist: anyio==4.4.0
+Requires-Dist: asgiref==3.8.1
+Requires-Dist: bcrypt==4.1.3
+Requires-Dist: blinker==1.8.2
+Requires-Dist: certifi==2024.6.2
+Requires-Dist: charset-normalizer==3.3.2
+Requires-Dist: click==8.1.7
+Requires-Dist: django-cors-headers==4.3.1
+Requires-Dist: django==5.0.6
+Requires-Dist: djangorestframework-simplejwt==5.3.1
+Requires-Dist: djangorestframework==3.15.1
+Requires-Dist: dnspython==2.0.0
+Requires-Dist: email-validator==2.1.1
+Requires-Dist: h11==0.14.0
+Requires-Dist: httpcore==1.0.5
+Requires-Dist: httptools==0.6.1
+Requires-Dist: httpx==0.27.0
+Requires-Dist: idna==3.7
+Requires-Dist: itsdangerous==2.2.0
+Requires-Dist: jinja2==3.1.4
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: markupsafe==2.1.5
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: motor==3.4.0
+Requires-Dist: mypy-extensions==1.0.0
+Requires-Dist: mypy==1.10.0
+Requires-Dist: mysqlclient==2.2.4
+Requires-Dist: orjson==3.10.3
+Requires-Dist: passlib==1.7.4
+Requires-Dist: pip==24.2
+Requires-Dist: pydantic-core==2.18.4
+Requires-Dist: pydantic==2.7.3
+Requires-Dist: pygments==2.18.0
+Requires-Dist: pyjwt==2.8.0
+Requires-Dist: pymysql==1.1.1
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: python-multipart==0.0.9
+Requires-Dist: pyyaml==6.0.1
+Requires-Dist: requests==2.32.3
+Requires-Dist: rich==13.7.1
+Requires-Dist: ruff==0.4.8
+Requires-Dist: setuptools==65.5.0
+Requires-Dist: shellingham==1.5.4
+Requires-Dist: sniffio==1.3.1
+Requires-Dist: sqlparse==0.5.0
+Requires-Dist: starlette==0.37.2
+Requires-Dist: typer==0.12.3
+Requires-Dist: typing-extensions==4.12.2
+Requires-Dist: ujson==5.10.0
+Requires-Dist: urllib3==2.2.1
+Requires-Dist: uv==0.2.10
+Requires-Dist: uvicorn==0.30.1
+Requires-Dist: uvloop==0.19.0
+Requires-Dist: watchfiles==0.22.0
+Requires-Dist: websockets==12.0
+Requires-Dist: werkzeug==3.0.3
+
+# Relate
+
+**Relate** is a web application demonstrating authentication and CRUD functionality, allowing users to register, log in, create, update, and delete blog posts. The backend is built with Django and Django REST Framework, while the frontend is developed using React. 
+
+## Features
+
+- User authentication (register, login, logout)
+- CRUD operations for blogs (create, read, update, delete)
+- User-specific blogs: Each blog post is associated with the user who created it.
+- Markdown editor for writing and formatting blog content
+
+## Tech Stack
+
+- **Backend**: Django, Django REST Framework
+- **Frontend**: React, Context API
+- **Database**: MySQL
+- **Authentication**: JWT (JSON Web Tokens)
+- **Markdown Editor**: For rich text formatting of blog content
+
+## API Endpoints
+
+- **Authentication**:
+  - `POST /api/register`: Register a new user
+  - `POST /api/login`: Log in an existing user
+  - `POST /api/logout`: Log out the authenticated user
+  <!-- - `GET /api/profile`: Retrieve the profile of the authenticated user
+  - `PUT /api/profile/update`: Update the authenticated user’s profile
+  - `POST /api/profile/change-password`: Change the password of the authenticated user -->
+
+- **Blog**:
+  - `GET /api/blogs`: List all blogs (authenticated)
+  - `POST /api/blogs`: Create a new blog (authenticated)
+  - `GET /api/blogs/<id>`: Retrieve a specific blog (authenticated)
+  - `PUT /api/blogs/<id>`: Update a specific blog (authenticated)
+  - `DELETE /api/blogs/<id>`: Delete a specific blog (authenticated)
+
+### API Endpoints Diagram
+*(Add a diagram that visually represents your API endpoints, e.g., using a tool like Lucidchart or Canva)*
+
+## Database Model
+
+*(Add a visual representation of your database schema, including tables for users, blogs, etc.)*
+
+## How to Run It
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/relate.git
+   cd relate
+   ```
+
+2. **Backend Setup**:
+   - Install Python dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - Set up MySQL database:
+     - Create a database in MySQL.
+     - Update database settings in `settings.py`.
+   - Run migrations:
+     ```bash
+     python manage.py migrate
+     ```
+   - Start the Django server:
+     ```bash
+     python manage.py runserver
+     ```
+
+3. **Frontend Setup**:
+   - Navigate to the frontend directory:
+     ```bash
+     cd frontend
+     ```
+   - Install Node dependencies:
+     ```bash
+     npm install
+     ```
+   - Start the React development server:
+     ```bash
+     npm start
+     ```
+
+4. **Access the Application**:
+   - Visit `http://localhost:3000` in your browser.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+## Contributors
+
+*(Include guidelines on how others can contribute, and a list of current contributors.)*
+
+---
+
+### Suggestions
+
+1. **API Endpoints Diagram**: Use tools like Canva, Lucidchart, or Excalidraw to create a visual representation of your API endpoints and how they connect.
+
+2. **Database Model**: Use tools like DBDiagram, Draw.io, or similar to showcase your database schema.
+
+3. **License**: Include the text of the license you are using, like MIT, Apache 2.0, or GNU GPL.
+
+4. **Contributors**: Add a section with guidelines on how to contribute to the project, such as forking the repo, creating pull requests, or joining discussions.
