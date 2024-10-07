@@ -70,8 +70,22 @@ def patch_blog(request, pk):
     """
         This is a patch request where the client is able to update a single blogs information
     """
+    title = request.data.get('title')
+    body = request.data.get('body')
     blog = Blog.objects.get(id = pk)
-    serializer = BlogSerializer(instance= blog, data=request.data, partial=True)
+    
+    empty_fields = []
+    if not title:
+        empty_fields.append('title')
+    if not body:
+        empty_fields.append('body')
+
+    if empty_fields:
+        return Response({'error': "please fill in all fields", "empty_fields": empty_fields}, status=HTTP_400_BAD_REQUEST)
+    
+    data = {'title': title, 'body': body}
+    
+    serializer = BlogSerializer(instance= blog, data=data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=HTTP_200_OK)

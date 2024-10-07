@@ -1,36 +1,37 @@
 /* eslint-disable react/prop-types */
-import { createContext, useReducer, useEffect} from "react";
+import { createContext, useReducer} from "react";
 
 export const AuthContext = createContext();
 
 
-export const authReducer = (state, action) => {
+export const authReducer = ( state, action ) => {
     switch (action.type) {
         case "LOGIN":
-            return { user: action.payload}
+            return {
+                user: action.payload,
+            }
         case "LOGOUT":
-            return { user: null}
+            return {
+                user: null,
+            }
         default:
-            return state
+            // if nothing matches, return the previous state
+            return state;
     }
 }
 
+//  need to create a custom component that will be used to wrap the app to 
+//  provide a value from the AuthContext
 export const AuthContextProvider = ({ children }) => {
-    const [ state, dispatch] = useReducer(authReducer, {
-        auth: null
-    });
+    const [ state, dispatch ] = useReducer( authReducer, {
+        user: null
+    } );
 
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
-
-        if (user) {
-            dispatch({ type: "LOGIN", payload: user})
-        }
-    }, []);
+    console.log('auth context state', state)
 
     return (
-        <AuthContext.Provider value= {{ ...state, dispatch}}>
-            {children}
+        <AuthContext.Provider value={{ ...state, dispatch }}>
+            { children }
         </AuthContext.Provider>
     )
 }
