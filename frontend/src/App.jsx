@@ -13,6 +13,8 @@ import { EditBlog } from './pages/EditBlog';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from './pages/NotFound';
 import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+
 
 
 // layouts
@@ -38,6 +40,7 @@ const router = createBrowserRouter(
       <Route path='/edit/:id' element={<EditBlog />} action={blogEditAction}  loader={BlogDetailsLoader}/>
 
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/signup' element={<SignupPage />} />
       <Route path='*' element={<NotFound /> } />
     </Route>
   )
