@@ -46,6 +46,7 @@ def sign_up(request):
         tokens = get_tokens_for_user(user)
         user_data = user.email
         return Response({'user': user_data, 'tokens': tokens}, status = status.HTTP_200_OK)
+    # else:
     return Response({'error':serializer.errors}, status = status.HTTP_400_BAD_REQUEST)
 
 
@@ -68,4 +69,5 @@ def login(request):
         tokens = get_tokens_for_user(user)
         user_data = user.email
         return Response({'user': user_data, 'tokens': tokens}, status.HTTP_200_OK)
+    # else:
     return Response({'error': 'Invalid Credentials'}, status.HTTP_400_BAD_REQUEST)

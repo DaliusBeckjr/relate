@@ -25,7 +25,10 @@ def create_blog(request):
         empty_fields.append('body')
 
     if empty_fields:
-        return Response({'error': "please fill in all fields", "empty_fields": empty_fields}, status=HTTP_400_BAD_REQUEST)
+        return Response({
+            'error': "please fill in all fields", 
+            "empty_fields": empty_fields
+            }, status=HTTP_400_BAD_REQUEST)
 
     data = {'title': title, 'body': body}
     serializer = BlogSerializer(data=data)
