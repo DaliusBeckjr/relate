@@ -1,12 +1,14 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_201_CREATED, HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT
+from rest_framework.permissions import IsAuthenticated
 
 from api.serializers import BlogSerializer
 from blog.models import Blog
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated]) # this is how we would protect routes in the api from unauthenticated users
 def create_blog(request):
     """
         This is where a user is able to create a new blog post taking in the arguments of title and body
@@ -46,6 +48,7 @@ def create_blog(request):
 
 # going to learn how to add pagination so it can make it easier for client to render out a certain amount and not have an overload of lagging
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_all_blogs(request):
     """
         This is a Get request where the client is able to retrieve all of the blog objects that are created by the clients
@@ -56,6 +59,7 @@ def get_all_blogs(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_single_blog(request, pk):
     """
         This is a Get request where the client is able to retrieve a single blog post 
@@ -69,6 +73,7 @@ def get_single_blog(request, pk):
 
 
 @api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
 def patch_blog(request, pk):
     """
         This is a patch request where the client is able to update a single blogs information
@@ -96,6 +101,7 @@ def patch_blog(request, pk):
 
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def delete_blog(request, pk):
     """
         This is a delete request where the client is able to delete a single blogs information from the database
