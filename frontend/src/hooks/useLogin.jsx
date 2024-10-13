@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./useAuthContext";
 
 
@@ -6,12 +7,13 @@ export const useLogin = () => {
     const [ error, setError ] = useState(null)
     const [ isLoading, setIsLoading ] = useState(null)
     const { dispatch } = useAuthContext()
+    const navigate = useNavigate();
 
     const login = async (email, password) => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('http://localhost:8000/api/login/', {
+        const response = await fetch('http://localhost:8000/api/user/login', {
             method: "POST",
             headers: {"Content-type": "application/json"},
             body: JSON.stringify({ email, password })
@@ -29,6 +31,7 @@ export const useLogin = () => {
             dispatch({type: 'LOGIN', payload: json})
 
             setIsLoading(false)
+            navigate('/')
         }
     } 
     return { login, isLoading, error }

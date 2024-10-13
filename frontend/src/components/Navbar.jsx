@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom"
 import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 
 
 const Navbar = () => {
     const { logout } = useLogout();
+    const { user } = useAuthContext();
 
     const handleClick = () => {
         logout();
@@ -16,11 +18,18 @@ const Navbar = () => {
         <nav className="flex justify-between items-center  bg-slate-200 rounded-xl py-4 px-6 glass dark:glass-dark">
                 <p className="text-xl font-semibold text-indigo-600">Relate</p>
                 <div className="">
-                <NavLink to='/' className="hover:underline hover: decoration-2 hover:underline-offset-8 hover:decoration-indigo-500 text-slate-800 font-bold text-base  mx-5"> Home</NavLink> 
-                <NavLink to='/create' className="btn btn-primary">Create Post</NavLink>
-                <NavLink to='/login'>Login</NavLink> |
-                <NavLink to='/signup'>Signup</NavLink> | 
-                <button onClick={handleClick}>Logout</button>
+                {user && (<div>
+                    <NavLink to='/' className="hover:underline hover: decoration-2 hover:underline-offset-8 hover:decoration-indigo-500 text-slate-800 font-bold text-base  mx-5"> Home</NavLink> 
+                    <NavLink to='/create' className="btn btn-primary">Create Post</NavLink>
+                    <button onClick={handleClick}>Logout</button>
+                </div>)}
+
+                {!user && (
+                    <div className="">
+                        <NavLink to='/login'>Login</NavLink>
+                        <NavLink to='/signup'>Signup</NavLink> 
+                    </div>
+                )}
                 </div>
         </nav>
     )

@@ -15,5 +15,5 @@ body {
 }
 
 .glass-dark {
-  @apply bg-black/40 shadow-lg shadow-black/50 border border-white/10;
+  @apply bg-black/10 rounded-lg shadow-lg shadow-black/50 border border-white/10 backdrop-blur-[5.7px];
 }

@@ -1,13 +1,19 @@
 import { useLoaderData, useParams, Link, useNavigate } from "react-router-dom"
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function BlogDetails() {
     const { id } = useParams();
     const blog = useLoaderData();
     const navigate = useNavigate();
+    const { user } = useAuthContext();
 
     const handleClick = async () => {
         const response = await fetch('http://localhost:8000/api/blogs/delete/' + id, {
             method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${user.tokens.access}`
+            }
         })
 
         if (response.ok) {

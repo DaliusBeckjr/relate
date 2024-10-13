@@ -1,6 +1,8 @@
 import { redirect } from "react-router-dom"
 
 const blogEditAction = async ({ request, params }) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+
     const { id } = params;
     const be_URI = 'http://localhost:8000/api/blogs/update/'
     const data = await request.formData();
@@ -10,7 +12,8 @@ const blogEditAction = async ({ request, params }) => {
     const response = await fetch(be_URI + id, {
         method: 'PATCH',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${user.tokens.access}`
         },
         body: JSON.stringify(blog)
     })

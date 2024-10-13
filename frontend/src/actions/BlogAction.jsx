@@ -1,6 +1,7 @@
 import { redirect } from "react-router-dom"
 
 const blogAction = async ({ request }) => {
+    const user = JSON.parse(localStorage.getItem('user'));
     const be_URI = 'http://localhost:8000/api/blogs/create/'
     const data = await request.formData();
 
@@ -13,7 +14,8 @@ const blogAction = async ({ request }) => {
     const response = await fetch(be_URI, {
         method: 'POST',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${user.tokens.access}`
         },
         body: JSON.stringify(blog)
     })

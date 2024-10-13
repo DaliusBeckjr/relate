@@ -26,7 +26,7 @@ import { BlogDetailsLoader } from './loaders/BlogDetailsLoader';
 
 
 // actions
-import blogAction from './actions/BlogAction';
+import blogAction from './actions/blogAction';
 import blogEditAction from './actions/blogEditAction';
 
 
