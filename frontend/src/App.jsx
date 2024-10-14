@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import {
   createBrowserRouter,
   Route,
   createRoutesFromElements,
   RouterProvider,
+  Navigate,
 } from 'react-router-dom'
-
+import { useAuthContext } from './hooks/useAuthContext';
 
 // pages
 import Home from './pages/Home';
@@ -30,23 +32,44 @@ import blogAction from './actions/blogAction';
 import blogEditAction from './actions/blogEditAction';
 
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<RootLayout /> } errorElement={<NotFound />}>
-
-      <Route index element={<Home /> } loader={BlogsLoader}/>
-      <Route path='/create' element={<CreateBlog />} action={blogAction}/>
-      <Route path='/:id' element={<BlogDetails />} loader={BlogDetailsLoader} />
-      <Route path='/edit/:id' element={<EditBlog />} action={blogEditAction}  loader={BlogDetailsLoader}/>
-
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/signup' element={<SignupPage />} />
-      <Route path='*' element={<NotFound /> } />
-    </Route>
-  )
-)
 
 function App() {
+  const { user } = useAuthContext();
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<RootLayout /> } errorElement={<NotFound />}>
+  
+        <Route 
+          index 
+          element={
+            user ? <Home /> : <Navigate to='/login' replace/>
+          } 
+          loader={BlogsLoader}
+        />
+        <Route 
+          path='/create'
+          element={<CreateBlog />} 
+          action={blogAction}
+          />
+        <Route 
+          path='/:id' 
+          element={<BlogDetails />} 
+          loader={BlogDetailsLoader} 
+        />
+        <Route 
+          path='/edit/:id' 
+          element={<EditBlog />} 
+          action={blogEditAction}  
+          loader={BlogDetailsLoader}
+        />
+  
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignupPage />} />
+        <Route path='*' element={<NotFound /> } />
+      </Route>
+    )
+  )
 
   return (
     <>

@@ -15,26 +15,36 @@ export const LoginPage = () => {
 
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <h1>Login</h1>
-                <input 
+
+        <div className="hero min-h-screen">
+            <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
+                <h1 className="text-4xl font-semibold mb-5">Login</h1>
+
+                <label className="input input-bordered flex items-center gap-2 ">
+                    Email:
+                    <input className="grow"
                     type="email" 
                     name="email" 
-                    placeholder="Email"
+                    placeholder="Enter email here"
                     onChange = {(e) => setEmail(e.target.value)}
-                />
-                <input 
+                    />
+                </label>
+                <label className="input input-bordered flex items-center gap-2 my-5">
+                    Password:
+                    <input className="grow"
                     type="password" 
                     name="password" 
-                    placeholder="Password"
+                    placeholder="Enter password here"
                     onChange = {(e) => setPassword( e.target.value )}
                 />
+                </label>
 
-                <button disabled={isLoading}  type="submit">Login</button>
+                <button disabled={isLoading}  type="submit" className="btn">Login</button>
                 {error && <div className="error">{error}</div>}
             </form>
-        </>
+
+        </div>
+
     )
 }
 
