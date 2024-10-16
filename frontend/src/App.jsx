@@ -37,13 +37,10 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={<RootLayout /> } errorElement={<NotFound />}>
-  
+      <Route path='/' element={<RootLayout /> } errorElement={ user ? <NotFound /> : <Navigate to='/login' replace/>}>
         <Route 
           index 
-          element={
-            user ? <Home /> : <Navigate to='/login' replace/>
-          } 
+          element={ <Home />} 
           loader={BlogsLoader}
         />
         <Route 

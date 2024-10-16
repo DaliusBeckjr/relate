@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLogin } from "../hooks/useLogin";
+import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
     const [ email, setEmail ] = useState("");
@@ -20,24 +21,27 @@ export const LoginPage = () => {
             <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
                 <h1 className="text-4xl font-semibold mb-5">Login</h1>
 
-                <label className="input input-bordered flex items-center gap-2 ">
-                    Email:
-                    <input className="grow"
-                    type="email" 
-                    name="email" 
-                    placeholder="Enter email here"
-                    onChange = {(e) => setEmail(e.target.value)}
+                <div>
+                    <label className="input input-bordered flex items-center gap-2 ">
+                        Email:
+                        <input className="grow"
+                        type="email" 
+                        name="email" 
+                        placeholder="Enter email here"
+                        onChange = {(e) => setEmail(e.target.value)}
+                        />
+                    </label>
+                    <label className="input input-bordered flex items-center gap-2 my-5">
+                        Password:
+                        <input className="grow"
+                        type="password" 
+                        name="password" 
+                        placeholder="Enter password here"
+                        onChange = {(e) => setPassword( e.target.value )}
                     />
-                </label>
-                <label className="input input-bordered flex items-center gap-2 my-5">
-                    Password:
-                    <input className="grow"
-                    type="password" 
-                    name="password" 
-                    placeholder="Enter password here"
-                    onChange = {(e) => setPassword( e.target.value )}
-                />
-                </label>
+                    </label>
+                </div>
+                <p>Don&#39;t have an account? <Link to="/signup" className="btn btn-link">Signup</Link></p>
 
                 <button disabled={isLoading}  type="submit" className="btn">Login</button>
                 {error && <div className="error">{error}</div>}

@@ -23,12 +23,12 @@ const Navbar = () => {
                     <button onClick={handleClick}>Logout</button>
                 </div>)}
 
-                {!user && (
+                {/* {!user && (
                     <div className="mx-5">
                         <NavLink to='/login' className="mx-3 hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-indigo-500 text-slate-800 font-bold text-base dark:text-slate-300">Login</NavLink>
                         <NavLink to='/signup' className="hover:underline hover:decoration-2 hover:underline-offset-8 hover:decoration-indigo-500 text-slate-800 font-bold text-base dark:text-slate-300">Signup</NavLink> 
                     </div>
-                )}
+                )} */}
                 </div>
         </nav>
     )

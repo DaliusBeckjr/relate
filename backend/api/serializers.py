@@ -12,7 +12,8 @@ class UserSerializer(ModelSerializer):
 class BlogSerializer(ModelSerializer):
     class Meta:
         model= Blog
-        fields = ['id','title', 'body', 'created_at', 'updated_at']
+        fields = ['id','title', 'body', 'created_at', 'updated_at', 'author']
+        read_only_fields = ['author']  # Make 'author' read-only
         validators = []
 
     def validate_title(self, value):
