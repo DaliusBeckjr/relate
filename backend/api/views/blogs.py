@@ -19,6 +19,7 @@ def create_blog(request):
     """
     title = request.data.get('title')
     body = request.data.get('body')
+    author = request.user.id
     
     empty_fields = []
     if not title:
@@ -32,7 +33,7 @@ def create_blog(request):
             "empty_fields": empty_fields
             }, status=HTTP_400_BAD_REQUEST)
 
-    data = {'title': title, 'body': body, "author": request.user.id} # attach author to the blog
+    data = {'title': title, 'body': body, 'author': author} # attach author to the blog
     serializer = BlogSerializer(data=data, context={'request': request})
     
     if not serializer.is_valid():
